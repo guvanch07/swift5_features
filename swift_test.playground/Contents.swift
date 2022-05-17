@@ -10,6 +10,7 @@ label.text = greeting
 
 //:varibles
 let cons = "Hello World" //cons
+
 var str = "hello XCode" //varible
 
 str = "Changed"
@@ -33,6 +34,38 @@ let c: Float = 2.0000699 //no more 6 after dot
 let i: Int = 123
 
 let b: Bool = true
+
+
+//operators
+
+let e = 1
+
+var s = 0
+
+s += e
+
+let defaultName = "Steve"
+
+var name: String? = nil
+
+let myName = name ?? defaultName
+
+//ternar
+let bool = true
+
+let t = bool ? 10 : 0
+
+//range
+
+1...10 // from 1 to 10
+
+1..<10 // from 1 to 9
+
+
+
+
+
+
 
 
 
