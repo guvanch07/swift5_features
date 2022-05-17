@@ -62,6 +62,13 @@ let t = bool ? 10 : 0
 1..<10 // from 1 to 9
 
 
+//interpolution str
+
+let tepm = 12
+
+let weatherDescription = "the weather is \(tepm)"
+
+
 
 
 
