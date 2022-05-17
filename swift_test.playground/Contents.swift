@@ -92,6 +92,35 @@ arrayThree.insert(105, at: 2) // add with index
 arrayThree.remove(at: 4)
 arrayThree
 
+//dictionary
+
+let dictOne = Dictionary<String, String>()
+let dictTwo = [String: String] ()
+let dictThree: [String:String] = [:]
+var nameAges = ["Ivan":2,"vialii":4,"Ilay":5]
+
+nameAges.count
+nameAges.isEmpty
+
+nameAges["Ivan"] = 37 //update value
+
+let deleteArgs = nameAges.updateValue(40, forKey: "Ivan") // alse update value
+
+nameAges
+
+//remove
+nameAges["Ivan"] = nil
+nameAges
+
+let deleteValue = nameAges.removeValue(forKey: "Ilay")
+nameAges
+
+nameAges = [:] //it is like  removeAll
+
+
+
+
+
 
 
 
