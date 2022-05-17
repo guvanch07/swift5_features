@@ -69,6 +69,34 @@ let tepm = 12
 let weatherDescription = "the weather is \(tepm)"
 
 
+//arrays
+
+let arrayOne = Array<Int>()
+let arrayTwo = [Int]()
+var arrayThree : [Int] = []
+let arrayFour = [1,2,3,4,5]
+let arrayFive = [Int](repeating: 10, count: 6) //reapting
+
+
+arrayThree += arrayFive //add array to empty array
+
+arrayFour[2]
+arrayThree[1...3] = [15]
+arrayThree
+
+arrayThree.count - 1 //lenght
+
+arrayThree.append(100) //add to array
+arrayThree.insert(105, at: 2) // add with index
+
+arrayThree.remove(at: 4)
+arrayThree
+
+
+
+
+
+
 
 
 
