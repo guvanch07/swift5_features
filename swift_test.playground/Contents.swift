@@ -185,7 +185,8 @@ let totalScore = 10
 switch totalScore{
 case 20:
     print("yak")
-case 30, 35:
+    fallthrough
+case 30, 35: // 30 or 35
     print("yak")
 case 40:
     print("yak")
@@ -196,12 +197,122 @@ default:
 }
 
 
+//loop for in
+
+let array = [1,2,3,4,5]
+
+for i in array{
+    print(i)
+}
+
+//let string = "some string"
+//
+//for char in string.characters {
+//    print(char)
+//}
+
+let nameAndFingers = ["ivan": 20, "Sveta": 23, "oda": 21]
+
+for (name, numberoffinges) in nameAndFingers{ // iteract from maps
+    print ("bla bla \(name) bla bla \(numberoffinges)")
+}
 
 
+for (index,element) in array.enumerated() { // itarble lists
+    print("this is index \(index) this is value \(element)")
+}
 
 
+for i in stride(from: 0, through: 15, by: 5) { //!
+    print(i)
+}
+
+// while loop
+
+var timer = 5
+
+print("counting down")
+
+while timer > 0{
+    print(timer)
+    timer -= 1
+}
+
+print("start")
+
+// reapte while
+// iterating is running then checking condition
+var timer2 = 5
+repeat{
+    print(timer2)
+    timer2 -= 1
+} while timer2 > 0
 
 
+//fucntions
+
+//1 void
+func sayHello(){
+    print("hello")
+}
+
+func counting(parm: Int){
+    var parm = parm
+    parm += 1
+}
+
+counting(parm: 50)
+
+func returing () -> Int {
+    return 10
+}
+ let a = returing()
+a
+
+func  calcMoney(list: [Int]) -> Int{
+    var n = 0
+    func sayHello(){
+        print(n)
+    }
+    for item in list{
+        n += item
+    }
+    sayHello()
+    return n
+}
+calcMoney(list: [1,2,3,4,5])
+
+func sumCounts(allintegers integers: Int...) -> Int{  // more ints
+    
+    var sum = 0
+    
+    for i in integers{
+        sum += i
+    }
+    
+    
+    return sum
+}
+
+sumCounts(allintegers: 1,2,3,4,5,6,7,8)
+
+//if one of the parametrs dont need
+
+func calling (_:Int) -> Int{
+    return 10
+}
+calling(15)
+
+// func call another func
+func whereIYou(missed:Bool) -> (Int)-> Int{
+    func missCountUp (input: Int) -> Int {return input + 1}
+    func missCountDown (input: Int) -> Int {return input - 1}
+    
+    return missed ? missCountUp : missCountDown
+}
+ var n = 0
+n = whereIYou(missed: true)(n)
+n = whereIYou(missed: false)(n)
 
 
 
