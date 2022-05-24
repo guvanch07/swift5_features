@@ -1,4 +1,5 @@
 import UIKit
+import os
 
 var greeting = "Hello, playground"
 
@@ -313,6 +314,108 @@ func whereIYou(missed:Bool) -> (Int)-> Int{
  var n = 0
 n = whereIYou(missed: true)(n)
 n = whereIYou(missed: false)(n)
+
+// clouser or lamda
+
+func reaprt3times (clouser: () -> ()){
+    for _ in 1...5 {
+        clouser()
+    }
+}
+
+let clouser = { () -> () in //type
+    print("hello world")
+}
+
+reaprt3times(clouser: clouser) //clouser
+
+//замкание
+reaprt3times {
+    () -> () in //type
+        print("hello world")
+}
+
+
+let unsortedArray = [1,5,3,4,32,657,6443,5,8,75]
+
+let sortedArray = unsortedArray.sorted {
+    
+(number1: Int, number2: Int)-> Bool in
+    return number1 > number2
+}
+
+
+
+//tuple kortej
+
+let one = 1
+let two = 2
+let three = 3
+
+(one,two,three)
+
+let boy = (5,"Sergei")
+
+boy.0
+boy.1
+
+let (first,second,third) = (1,2,3)
+first
+second
+
+
+let greenPencil = (color : "red", lenght : 23, weight: 130)
+let(greenColor,greenLenght,greenWeight) = greenPencil
+
+
+let agesAndNames = ["misha": 30, "igor": 28, "vadim": 50]
+
+var age = 0
+var nameee = ""
+
+for (nameIn,ageIn) in agesAndNames{
+    if age < ageIn{
+        age = ageIn
+        nameee = nameIn
+    }
+}
+age
+nameee
+
+
+
+
+
+// OPTIONALS
+
+var fuel: Int?
+fuel = 20
+//fuel = nil
+
+print("\(fuel ?? 0) liters left")
+
+if let avaibleFuel = fuel {
+    print("\(avaibleFuel)leters left")
+    
+}else{
+    print("no fuel data avaible")
+}
+
+func checkFuel() {
+    guard let avaibleFuel = fuel else{
+        print("no fuels data avaible")
+        return
+    }
+    print("\(avaibleFuel) data avaible")
+}
+
+checkFuel()
+
+
+
+
+
+
 
 
 
