@@ -412,6 +412,142 @@ func checkFuel() {
 checkFuel()
 
 
+// CLASSES
+
+class Human {
+    
+    var name: String
+    var age: Int?
+    var hairs: Bool
+    
+    func tellAboutMe() -> String {
+        return "Hello my name is \(name)"
+    }
+    
+    func description() -> String {
+        if let humanAge = age {
+            return "hello! My name is \(name) and I'am \(humanAge)"
+        }else {
+            return "Hello! My name is \(name)"
+        }
+    }
+    init(name: String, age: Int?, hairs: Bool) {
+        self.hairs = hairs
+        self.age = age
+        self.name = name
+    }
+    init() {
+        name = "Vasyok"
+        age = nil
+        hairs = false
+    }
+}
+
+let humanOne = Human()
+
+humanOne.age = 30
+
+let hum = Human(name: "yess", age: 10, hairs: false)
+let hum1 = Human()
+
+// inhertance
+
+
+// final is cannot to allow inheratance
+class Child: Human{
+    var toy = "Horse"
+    
+    override func tellAboutMe() -> String {
+        let originalText = super.tellAboutMe()
+        return originalText + "And I have \(self.toy)"
+    }
+    
+     init(toy:String,name:String) {
+         self.toy = toy
+         
+         
+         super.init(name: "", age: 12, hairs: false)
+         
+        
+    }
+    
+}
+
+let child = Child(toy: "kel", name: "cat")
+
+
+//computed properties, it is setter
+
+class Rectangualar{
+    let height: Int
+    let width: Int
+    let depth: Int
+    class var type: Int {return 10} // it is like static type
+    
+    var volume: Int {
+        return height * width * depth
+    }
+    
+    init(height:Int,width:Int,depth: Int) {
+        self.height = height
+        self.width = width
+        self.depth = depth
+    }
+}
+Rectangualar.type
+
+let rect = Rectangualar(height: 10, width: 23, depth: 34)
+
+rect.volume
+
+class NewPerson{
+    var name: String
+    var secondName: String
+    
+    var fullName: String{
+        get{
+            return name + " " + secondName
+        }
+        
+        set(anotherValue){
+            let array = anotherValue.components(separatedBy: " ")
+            name = array[0]
+            secondName = array[1]
+        }
+        
+    }
+    
+    init(name: String, secondName: String) {
+        self.name = name
+        self.secondName = secondName
+    }
+}
+
+let person = NewPerson(name: "ilya", secondName: "akulow")
+person.fullName
+
+person.name
+person.secondName
+person.fullName = "Zaida Petrova"
+person.name
+
+// lazy properties
+
+func bigDataProcessingFunc() -> String {
+    return "Very long process"
+}
+
+class Processing {
+    let small = "very small"
+    let average = "average"
+    lazy var big = bigDataProcessingFunc()
+}
+
+let process = Processing()
+
+
+
+
 
 
 
