@@ -695,6 +695,53 @@ for item in arrayOfFurnuture{
     }
 }
 
+// arc
+
+
+class Person{
+    weak var dog: Dog?
+    
+    deinit{
+        print("Person is free")
+    }
+}
+
+class Dog {
+    unowned var person: Person
+    
+    init() {
+        self.person = Person()
+    }
+    
+    deinit{
+        print("Dog is free")
+    }
+}
+
+
+
+
+let firstScope = true
+let secondScope = false
+
+if firstScope {
+    
+    
+    
+    if secondScope{
+        
+        let person = Person()
+        let dog = Dog()
+        
+        person.dog = dog
+        dog.person = person
+        
+        print("secondScope is ended")
+    }
+    print("first has ended")
+}
+print("finish")
+
 
 
 
