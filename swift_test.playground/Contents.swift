@@ -546,6 +546,156 @@ class Processing {
 let process = Processing()
 
 
+// observer propertiies
+
+class SecretLabEmployee{
+    
+    var accessLavel = 0 {
+        willSet(value){
+            print("new boss is about to come")
+            print("new access level is \(value)")
+        }
+        didSet{
+            if accessLavel > 0 {
+                accessToDB = true
+            }else{
+                accessToDB = false
+            }
+            
+            print("new boss is about to come")
+            print("new access level is \(oldValue)")
+        }
+    }
+    var accessToDB = false
+}
+
+let employee = SecretLabEmployee()
+employee.accessLavel
+employee.accessToDB
+
+employee.accessLavel = 1
+employee.accessToDB
+
+//typealias
+
+typealias DoubleInteger = (Int,Int)
+let someConstans: DoubleInteger = (1,2)
+
+typealias DictionaryType = [String : Int]
+var dictionary : DictionaryType = [:]
+dictionary["Apartment123"] = 123
+dictionary
+
+// enums
+
+enum Movement: Int{
+    case forward = 10
+    case backward = 23
+    case left = 101
+    case reight = 123
+    
+}
+
+let movementdirection = Movement.backward.rawValue
+
+
+enum Device {
+    case IPad (color: String), IPhone
+    
+    var year: Int {
+        switch self {
+        case .IPhone: return 2009
+        case .IPad(let color) where color == "black" : return 2005
+        case .IPad: return 2010
+        }
+    }
+    }
+
+enum Charachter {
+    enum Weapon: Int {
+        case sword = 4
+        case wand = 10
+        
+        var damage: Int {
+            return rawValue * 10
+        }
+    }
+    enum CharacterType {
+        case knife
+        case mage
+    }
+}
+
+let charWeapon = Charachter.Weapon.sword.damage
+
+indirect enum Lunch{
+    case salad
+    case soup
+    case meal(Lunch,Lunch)
+}
+
+let lunch = Lunch.meal(.salad, .soup)
+
+// struct
+
+class Site {}
+
+let firstSite = Site()
+let secondSite = Site()// equal
+let thirdSite = secondSite// equal
+
+if (secondSite === thirdSite){
+    print("===")
+    
+}else{
+    print("not ===")
+    
+}
+
+
+class Furnature{
+    
+}
+class Bed: Furnature{}
+
+class Table: Furnature{}
+
+var arrayOfFurnuture = [Furnature]()
+
+arrayOfFurnuture.append(Bed())
+arrayOfFurnuture.append(Bed())
+arrayOfFurnuture.append(Bed())
+
+arrayOfFurnuture.append(Table())
+arrayOfFurnuture.append(Table())
+arrayOfFurnuture.append(Table())
+
+var bed = 0
+var table = 0
+
+for item in arrayOfFurnuture{
+    if item is Bed{
+        bed += 1
+    }else {
+        table += 1
+    }
+}
+
+for item in arrayOfFurnuture{
+    if item is Bed{
+        _ = item as! Bed
+        bed += 1
+    }
+}
+
+for item in arrayOfFurnuture{
+    if let bedforSure = item as? Bed{
+        bed += 1
+        bedforSure.self
+    }
+}
+
+
 
 
 
