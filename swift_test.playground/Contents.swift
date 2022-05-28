@@ -24,7 +24,7 @@ str = "Changed"
 
 let x: Character = "q" // small alphabit must be
 
-let y: String = "Hey Ios"
+var y: String = "Hey Ios"
 
 let z: Double = 2.0000
 
@@ -727,11 +727,16 @@ let secondScope = false
 if firstScope {
     
     
+    let closureArc: () -> ()?
     
     if secondScope{
         
         let person = Person()
         let dog = Dog()
+        
+        closureArc = {[weak person] in
+            print(person ?? "")
+        }
         
         person.dog = dog
         dog.person = person
@@ -743,11 +748,96 @@ if firstScope {
 print("finish")
 
 
+var yess = "a"
+
+let closure  = { [x] () -> () in
+    print(x)
+}
+clouser()
+
+yess = "b"
+
+clouser()
+
+
+// error handling
+
+
+enum PossibleErrors: Error{
+    case notInStock
+    case notEnoughMoney
+}
 
 
 
 
+struct Book{
+    let price: Int
+    var count: Int
+}
 
+class Library{
+    var deposite = 11
+    var libraryBooks = ["Book1": Book(price: 10, count: 3),"Book2": Book(price: 40, count: 20),"Book3": Book(price: 30, count: 0)]
+    
+    func getTheBook(withName: String) throws{
+        guard var book = libraryBooks[withName] else {
+            throw PossibleErrors.notInStock
+        }
+        guard book.count > 0 else {
+            throw PossibleErrors.notInStock
+        }
+        guard book.price <= deposite else{
+            throw PossibleErrors.notEnoughMoney
+        }
+        deposite -= book.price
+        book.count -= 1
+        libraryBooks[withName] = book
+        print("You get the book: \(withName)")
+    }
+}
+
+let library = Library()
+try? library.getTheBook(withName: "Book1")
+
+do{
+    try library.getTheBook(withName: "Book2")
+}catch PossibleErrors.notEnoughMoney{
+    print("not enought money")
+    
+}catch PossibleErrors.notInStock{
+    print("not in the stock")
+}
+
+func doConnection() throws -> Int{
+    return 10
+}
+let oneVersion = try? doConnection()
+var twoVersion: Int?
+
+do{
+    twoVersion = try doConnection()
+}catch{
+    twoVersion = nil
+}
+
+var attempt = 0
+
+func whatEverFuntion(parms:Int) -> Int{
+    defer{
+        attempt += 2
+    }
+    defer{
+        attempt *= 10 // start callind from down
+    }
+    switch parms{
+    case 0: return 100
+    case 1: return 200
+    default: return 400
+    }
+}
+
+whatEverFuntion(parms: 1)
 
 
 
