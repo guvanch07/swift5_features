@@ -839,8 +839,55 @@ func whatEverFuntion(parms:Int) -> Int{
 
 whatEverFuntion(parms: 1)
 
+//subScript
 
+//struct WorkPlace{
+//    var table: String
+//    var workPlace : [String]
+//
+//    subscript(index:Int) -> String?{
+//
+//        get{
+//            switch index {
+//            case 0: return table
+//            case 1..<workPlace.count + 1 : return workPlace[index - 1]
+//            default: return nil
+//            }
+//        }
+//
+//        set{
+//            switch index {
+//            case 0: return table = newValue ?? ""
+//            case 1..<workPlace.count + 1 : return workPlace[index - 1] = newValue ?? ""
+//            default: break
+//        }
+//    }
+//}
+//
+//    var work = WorkPlace(table: "table", workPlace: ["chair","airchair","amp"])
+//    work.workPlace[1]
+//    work[1]
+//
 
+// extension
+
+extension Int{
+    var isEven: Bool{
+        return self % 2 == 0 ? true : false
+    }
+    func power(powerValue: Int) -> Int{
+        var tempValue = self
+        for _ in 1..<powerValue {
+            tempValue *= self
+        }
+        return tempValue
+    }
+}
+
+let newA = 12
+
+newA.isEven
+newA.power(powerValue: 10)
 
 
 
