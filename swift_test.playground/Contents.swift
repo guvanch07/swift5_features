@@ -37,6 +37,8 @@ let i: Int = 123
 let b: Bool = true
 
 
+
+
 //operators
 
 let e = 1
@@ -73,10 +75,12 @@ let weatherDescription = "the weather is \(tepm)"
 //arrays
 
 let arrayOne = Array<Int>()
-let arrayTwo = [Int]()
+let arrayTwo = [Int]() //
 var arrayThree : [Int] = []
 let arrayFour = [1,2,3,4,5]
 let arrayFive = [Int](repeating: 10, count: 6) //reapting
+
+
 
 
 arrayThree += arrayFive //add array to empty array
@@ -823,6 +827,10 @@ do{
 
 var attempt = 0
 
+
+
+
+
 func whatEverFuntion(parms:Int) -> Int{
     defer{
         attempt += 2
@@ -891,9 +899,138 @@ newA.power(powerValue: 10)
 
 
 
+let integers = [1,4,5,6,2,7,3,6,3,4]
+func filter (numbers: [Int], closure: (Int) -> (Bool)) -> [Int] {
+    var filteredNumbers: [Int] = []
+    for number in numbers {
+        if closure(number) {
+            filteredNumbers.append(number)
+        }
+    }
+    return filteredNumbers
+}
+func matrix(i : Int) -> Bool {
+    return i % 2 == 1
+}
+print(filter(numbers: integers, closure: matrix))
+
+
+class Personn{
+    var job: Job? = Job()
+    var age: Int
+    var year: Int
+    var name: String
+    var lastName: String
+    
+    var sum: Int{
+       
+            age + year
+   
+    }
+    
+    var fullName: String {
+        get{
+            name + lastName
+        }
+        set{
+            let initialValue = newValue.components(separatedBy: " ")
+            name = initialValue.first ?? ""
+            lastName = initialValue.last ?? ""
+            
+        }
+       
+    }
+    
+    init(age: Int, year:Int,name:String,lastName:String){
+        self.age = age
+        self.year = year
+        self.name = name
+        self.lastName = lastName
+    }
+    
+    
+}
+
+class Job{}
+
+let personn = Personn(age: 23, year: 2022,name: "murat",lastName: "yakubow")
+
+personn.sum
+personn.fullName = "jonh jonhson"
+
+personn.name
+personn.lastName
+
+
+class Girl {
+    var name = "Jane"
+    var didLike: Bool
+    var phoneNumber = 555381
+    init(didLike: Bool) {
+        self.didLike = didLike
+    }
+    func tellAboutMe() {
+        if didLike {
+            print("Hi, my name is \(name) and this is my phone number \(phoneNumber)")
+        } else {
+            print("Hi! I'm \(name). Bye, I have to go.")
+        }
+    }
+}
+
+let girl = Girl(didLike: true)
+
+girl.tellAboutMe()
+typealias Tuple = (Int, Int, String)
+                   
+let erer: Tuple = (1,2,"ew")
+
+enum MealType{
+    case breakFast(food: String)
+    case dinner(wine:String)
+
+    var time: Int{
+        switch self{case .breakFast(food: _):
+            print(10.59)
+        case .dinner(wine: _):
+            print(23.59)
+        }
+    }
+}
+
+var myMeal = MealType.dinner(wine: "wino")
+
+switch myMeal {
 
 
 
+case .breakFast(food: let food):
+    print("food is \(food)")
+case .dinner(wine: let wine):
+    print("wine is \(wine)")
+}
 
 
+enum RainbowColors: Int {
+    case red, orange, yellow, green, blue, indigo, violet
+}
+let orderNumber = RainbowColors.yellow.rawValue
 
+
+enum Weather {
+    case sunny
+    case rainy
+    case windy(speed: Int)
+}
+let today: Weather = .windy(speed: 12)
+ 
+switch today {
+case .sunny:
+    print("Let's go for a walk")
+case .rainy:
+    print("Don't forget to take an umbrella")
+case .windy(let speed) where speed >= 12:
+    print("You should stay at home")
+default:
+    print("It is a bit windy")
+}
