@@ -990,10 +990,11 @@ enum MealType{
     case dinner(wine:String)
 
     var time: Int{
-        switch self{case .breakFast(food: _):
-            print(10.59)
+        switch self{
+        case .breakFast(food: _):
+            return 10
         case .dinner(wine: _):
-            print(23.59)
+            return 23
         }
     }
 }
@@ -1034,3 +1035,109 @@ case .windy(let speed) where speed >= 12:
 default:
     print("It is a bit windy")
 }
+
+
+class Toy {
+    var name = ""
+}
+class Bear: Toy {
+    var color = "brown"
+}
+class Doll: Toy {
+    var colorOfDress = "red"
+}
+ 
+var toys: [Toy] = []
+toys = [Doll(), Bear(), Doll()]
+ 
+for toy in toys {
+    if let bear = toy as? Bear {
+        print(bear.color)
+    }
+}
+
+let items: [Any] = [2, 4, 3.5, "string", true]
+if let lastItem = items.last as? String {
+    print(lastItem)
+}
+
+class User {
+    var password: String
+    init(password: String) {
+        self.password = password
+    }
+    
+    lazy var showingPassword: () -> String = {
+        "your password is \(self.password)"
+    }
+}
+var user = User(password: "a2412akl")
+let textForPassword = user.showingPassword()
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+enum PrintingErrors: Error{
+    case noPaper
+    case noToner
+}
+
+struct Printer{
+    var toner: Bool
+    var paper: Bool
+}
+
+func printMaterial(materialName: String,for printer: Printer) throws -> String {
+    guard printer.paper else {
+        throw PrintingErrors.noPaper
+    }
+    guard printer.toner else {
+        throw PrintingErrors.noToner
+    }
+    
+    return "the material \(materialName) has been printed"
+}
+
+var somePrinter = Printer(toner:true,paper: false)
+
+
+let ourMaterial = "some very important text"
+
+
+do{
+    let responce = try printMaterial(materialName: ourMaterial,for: somePrinter)
+    print(responce)
+}catch PrintingErrors.noToner{
+    print("tonner is finished")
+}catch PrintingErrors.noPaper {
+    print("paper is finished")
+}
+
+struct Collection<T>{
+    var elements: [T] = []
+    
+    func printCollection(){
+        for element in elements{
+            print(element)
+        }
+    }
+}
+
+var collectionOne = Collection<Int>(elements: [1,2,3,4,5,6,7])
+collectionOne.printCollection()
+
+var collectionTwo = Collection<String>(elements: ["one","two","three","four","five","fix"])
+collectionOne.printCollection()
+
+func detectString<T>(value: T) -> T  {
+    if(value is String){
+       print("string")
+    }
+    return value
+}
+
+detectString(value: String())
+
+
+
+
